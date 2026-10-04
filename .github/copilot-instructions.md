@@ -22,3 +22,12 @@ The user is a native Japanese speaker who is also fluent in English. The user ma
 - When modifying code, include or update relevant tests when appropriate.
 - Before concluding, verify the result with the most relevant available tests, type checks, linters, browser checks, or build commands.
 - Never include secrets, credentials, tokens, or other sensitive information in generated code or examples.
+
+## Project-specific instructions
+
+- This directory is for practicing The Odin Project's Project: Library assignment: https://www.theodinproject.com/lessons/node-path-javascript-library
+- Treat the assignment as a learning exercise. Preserve the user's opportunity to design and implement the solution; begin with explanations, questions, or focused hints before providing substantial code.
+- Use plain HTML, CSS, and JavaScript. Do not introduce frameworks, libraries, build tools, or a backend unless the user explicitly requests them.
+- Keep the existing `index.html`, `style.css`, and `javascript.js` structure unless changing it is necessary for the assignment.
+- When helping with this project, connect the concepts of JavaScript objects or constructors, arrays, DOM rendering, forms, and event handlers to the implementation.
+- Preserve existing behavior when adding features, and verify changes by opening `index.html` in a browser and testing the relevant user interactions.

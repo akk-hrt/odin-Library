@@ -1,10 +1,10 @@
 const myLibrary = [];
 
-
 function Book(title, author, pages, read, id){
     if (!new.target) {
         throw Error ("You must use the 'new' operator to call theconstructor");
     }
+
     this.id = id;
     this.title = title;
     this.author = author;
@@ -19,6 +19,7 @@ function Book(title, author, pages, read, id){
         }
         return `${this.title} by ${this.author}, ${this.pages} pages, ${reading_status}`
     }
+  
 }
 
 function addBookToLibrary(title, author, pages, read){
@@ -28,26 +29,60 @@ function addBookToLibrary(title, author, pages, read){
     myLibrary.push(newItem);
 }
 
+
+/* Sample Data
+----------------------------- */
 // For Testing The Hobbit by J.R.R. Tolkien, 295 pages, not read yet
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
-// console.log(myLibrary[0].title);
+addBookToLibrary("1984", "George Orwell", 328, true);
+addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, false);
 
-const main = document.getElementById("main");
 
 
-for (let i = 0; i < myLibrary.length; i++){
+const tbody = document.querySelector("tbody");
+
+for (let i = 0; i < myLibrary.length; i++) {
     let currentBook = myLibrary[i];
-    console.log(currentBook.id);
+    console.log(currentBook);
+    // Create a new table row
+    const tr = document.createElement("tr");
 
-    const card = document.createElement("div");
-    card.setAttribute("class", "card");
+    // Book ID
+    const row_id = document.createElement("td");
+    row_id.textContent = currentBook.id;
+    tr.appendChild(row_id);
+
+
+    // Book Title
+    const row_title = document.createElement("td");
+    row_title.textContent = currentBook.title;
+    tr.appendChild(row_title);
     
-    const h2 = document.createElement("h2");
-    h2.setAttribute("class", "title");
-    h2.textContent = currentBook.title;
+
+    // Book Author
+    const row_author = document.createElement("td");
+    row_author.textContent = currentBook.author;
+    tr.appendChild(row_author);
+
+
+    // Number of Pages
+    const row_pages = document.createElement("td");
+    row_pages.textContent = currentBook.pages;
+    tr.appendChild(row_pages);
+
+
+    // Reading Status
+    const row_status = document.createElement("td");
     
-    
-    card.appendChild(h2);
-    main.appendChild(card);
-    
+        // Create a switch
+
+
+    // Remove Button
+    const row_remove = document.createElement("td");
+        // Create a button
+
+
+
+    tbody.appendChild(tr);
+
 }

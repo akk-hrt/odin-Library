@@ -48,41 +48,56 @@ for (let i = 0; i < myLibrary.length; i++) {
     // Create a new table row
     const tr = document.createElement("tr");
 
-    // Book ID
+    /* Book ID
     const row_id = document.createElement("td");
     row_id.textContent = currentBook.id;
     tr.appendChild(row_id);
+    */
 
 
     // Book Title
     const row_title = document.createElement("td");
     row_title.textContent = currentBook.title;
+    row_title.setAttribute("data-label", "title");
     tr.appendChild(row_title);
     
 
     // Book Author
     const row_author = document.createElement("td");
     row_author.textContent = currentBook.author;
+    row_author.setAttribute("data-label", "author");
     tr.appendChild(row_author);
 
 
     // Number of Pages
     const row_pages = document.createElement("td");
     row_pages.textContent = currentBook.pages;
+    row_pages.setAttribute("data-label", "pages");
     tr.appendChild(row_pages);
 
 
     // Reading Status
     const row_status = document.createElement("td");
+    row_status.setAttribute("data-label", "status");
     
         // Create a switch
+        const switch_status = "Read?"
+        
+    row_status.textContent = switch_status;
+    // row_status.appendChild(switch_status);
+    tr.appendChild(row_status);
 
 
     // Remove Button
     const row_remove = document.createElement("td");
+    row_remove.setAttribute("data-label", "remove");
+
         // Create a button
+        const btn_remove = `Remove ${currentBook.title} from my library.`
 
-
+    row_remove.textContent = btn_remove;
+    // row_remove.appendChild(btn_remove);
+    tr.appendChild(row_remove);
 
     tbody.appendChild(tr);
 

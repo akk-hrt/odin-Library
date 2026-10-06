@@ -44,6 +44,7 @@ const tbody = document.querySelector("tbody");
 for (let i = 0; i < myLibrary.length; i++) {
     let currentBook = myLibrary[i];
     console.log(currentBook);
+    
     // Create a new table row
     const tr = document.createElement("tr");
 

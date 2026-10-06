@@ -1,49 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>My Library</h1>
-    <button type="button" id="NewBook">
-        Add New Book
-    </button>
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Number of Pages</th>
-                <th scope="col">Reading Status</th>
-                <th scope="col">Remove</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0000</td>
-                <td>Test Name</td>
-                <td>Sample Author</td>
-                <td>139</td>
-                <td>
-                    <label>
-                        Read
-                        <input type="checkbox" role="switch">
-                    </label>
-                </td>
-                <td>
-                    <button type="button">
-                        remove this item
-                    </button>
-                </td>
-            </tr>
-        </tbody>
+    <main>
+        <h1>Odin Library</h1>
+        <!-- <button type="button" id="NewBook">
+            Add New Book
+        </button> -->
+        <h2>My Library</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Number of Pages</th>
+                    <th scope="col">Reading Status</th>
+                    <th scope="col">Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0000</td>
+                    <td>Test Name</td>
+                    <td>Sample Author</td>
+                    <td>139</td>
+                    <td>
+                        <label>
+                            Read
+                            <input type="checkbox" role="switch">
+                        </label>
+                    </td>
+                    <td>
+                        <button type="button">
+                            remove this item
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
 
-    </table>
-
+        </table>
+    </main>
+    <section aria-labelledby="newBookForm">
+        <h2 id="newBookForm">
+            Add a New Book
+        </h2>
+        <form action="">
+            <label for="new_title">
+                Title: 
+                <input type="text" id="new_title" name="new_title">
+            </label>
+            <label for="new_author">
+                Author:
+                <input type="text" id="new_author" name="new_author">
+            </label>
+            <label for="new_pages">
+                Number of Pages:
+                <input type="number" min="1" id="new_pages" name="new_pages">
+            </label>
+            <label for="new_status">
+                Have you read this book?
+                <input type="checkbox" name="new_status" id="new_status"> Yes, I have read this book.
+            </label>
+            <button type="submit">Add to my library.</button>
+        </form>
+    </section>
     <script src="javascript.js"></script>
 </body>
+
 </html>

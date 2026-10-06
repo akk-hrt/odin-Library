@@ -1,3 +1,44 @@
+/* Common Components
+------------------------------ */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+body {
+    margin: 0 10%;
+}
+
+
+/* Library Table
+----------------------- */
+
+tbody {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+tr {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+td,
+th {
+    display: block;
+}
+
 .card {
     border: 1px solid black;
     box-shadow: 5px 5px grey;

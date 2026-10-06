@@ -22,9 +22,18 @@ body {
 /* Library Table
 ----------------------- */
 
+table {
+    border: 1px dotted blue;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 tbody {
+    border: 1px dotted red;
+    box-sizing: border-box;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
 }
 

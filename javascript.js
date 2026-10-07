@@ -64,14 +64,18 @@ for (let i = 0; i < myLibrary.length; i++) {
 
     // Book Author
     const row_author = document.createElement("td");
-    row_author.textContent = currentBook.author;
+    const by = document.createElement("span");
+    by.setAttribute("aria-hidden", true);
+    by.textContent = "by ";
+    row_author.appendChild(by);
+    row_author.textContent += currentBook.author;
     row_author.setAttribute("data-label", "author");
     tr.appendChild(row_author);
 
 
     // Number of Pages
     const row_pages = document.createElement("td");
-    row_pages.textContent = currentBook.pages;
+    row_pages.textContent = `${currentBook.pages} pages`;
     row_pages.setAttribute("data-label", "pages");
     tr.appendChild(row_pages);
 

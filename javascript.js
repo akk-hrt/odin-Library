@@ -1,8 +1,8 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read, id){
+function Book(title, author, pages, read, id) {
     if (!new.target) {
-        throw Error ("You must use the 'new' operator to call theconstructor");
+        throw Error("You must use the 'new' operator to call theconstructor");
     }
 
     this.id = id;
@@ -10,7 +10,7 @@ function Book(title, author, pages, read, id){
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function(){
+    this.info = function () {
         let reading_status = ''
         if (read) {
             reading_status = 'read'
@@ -19,10 +19,10 @@ function Book(title, author, pages, read, id){
         }
         return `${this.title} by ${this.author}, ${this.pages} pages, ${reading_status}`
     }
-  
+
 }
 
-function addBookToLibrary(title, author, pages, read){
+function addBookToLibrary(title, author, pages, read) {
     let id = crypto.randomUUID();
     let newItem = new Book(title, author, pages, read, id);
 
@@ -30,63 +30,50 @@ function addBookToLibrary(title, author, pages, read){
 }
 
 
-/* Sample Data
------------------------------ */
-// For Testing The Hobbit by J.R.R. Tolkien, 295 pages, not read yet
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
-addBookToLibrary("1984", "George Orwell", 328, true);
-addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, false);
-
 
 /* Display Library Table
 -------------------------- */
 const tbody = document.querySelector("tbody");
 
-for (let i = 0; i < myLibrary.length; i++) {
-    let currentBook = myLibrary[i];
-    console.log(currentBook);
-    
-    // Create a new table row
-    const tr = document.createElement("tr");
+function displayLibrary(myLibrary) {
+    for (let i = 0; i < myLibrary.length; i++) {
+        let currentBook = myLibrary[i];
+        console.log(currentBook);
 
-    /* Book ID
-    const row_id = document.createElement("td");
-    row_id.textContent = currentBook.id;
-    tr.appendChild(row_id);
-    */
+        // Create a new table row
+        const tr = document.createElement("tr");
 
-
-    // Book Title
-    const row_title = document.createElement("td");
-    row_title.textContent = currentBook.title;
-    row_title.setAttribute("data-label", "title");
-    tr.appendChild(row_title);
-    
-
-    // Book Author
-    const row_author = document.createElement("td");
-    const by = document.createElement("span");
-    by.setAttribute("aria-hidden", true);
-    by.textContent = "by ";
-    row_author.appendChild(by);
-    row_author.textContent += currentBook.author;
-    row_author.setAttribute("data-label", "author");
-    tr.appendChild(row_author);
+        // Book Title
+        const row_title = document.createElement("td");
+        row_title.textContent = currentBook.title;
+        row_title.setAttribute("data-label", "title");
+        tr.appendChild(row_title);
 
 
-    // Number of Pages
-    const row_pages = document.createElement("td");
-    row_pages.textContent = `${currentBook.pages} pages`;
-    row_pages.setAttribute("data-label", "pages");
-    tr.appendChild(row_pages);
+        // Book Author
+        const row_author = document.createElement("td");
+        const by = document.createElement("span");
+        by.setAttribute("aria-hidden", true);
+        by.textContent = "by ";
+        row_author.appendChild(by);
+        row_author.textContent += currentBook.author;
+        row_author.setAttribute("data-label", "author");
+        tr.appendChild(row_author);
 
 
-    // Reading Status
-    const row_status = document.createElement("td");
-    row_status.setAttribute("data-label", "status");
-    
+        // Number of Pages
+        const row_pages = document.createElement("td");
+        row_pages.textContent = `${currentBook.pages} pages`;
+        row_pages.setAttribute("data-label", "pages");
+        tr.appendChild(row_pages);
+
+
+        // Reading Status
+        const row_status = document.createElement("td");
+        row_status.setAttribute("data-label", "status");
+
         // Create a checkbox
-        const switch_status =document.createElement("input");
+        const switch_status = document.createElement("input");
         switch_status.setAttribute("type", "checkbox");
 
         const switch_status_id = `${currentBook.id}_status`;
@@ -99,36 +86,82 @@ for (let i = 0; i < myLibrary.length; i++) {
 
         if (currentBook.read) {
             switch_status.checked = true;
-        } 
+        }
 
 
-        
-    // row_status.textContent = switch_status;
-    row_status.appendChild(switch_status);
-    row_status.appendChild(label_status);
-    tr.appendChild(row_status);
+
+        // row_status.textContent = switch_status;
+        row_status.appendChild(switch_status);
+        row_status.appendChild(label_status);
+        tr.appendChild(row_status);
 
 
-    // Remove Button
-    const row_remove = document.createElement("td");
-    row_remove.setAttribute("data-label", "remove");
+        // Remove Button
+        const row_remove = document.createElement("td");
+        row_remove.setAttribute("data-label", "remove");
 
         // Create a button
         const btn_remove = document.createElement("button")
-        
+
         btn_remove.type = "button"
 
         btn_remove.setAttribute("data-id", currentBook.id);
-        
+
         btn_remove.textContent = `Remove ${currentBook.title} from my library.`
 
-  
-    row_remove.appendChild(btn_remove);
-    tr.appendChild(row_remove);
 
-    tbody.appendChild(tr);
+        row_remove.appendChild(btn_remove);
+        tr.appendChild(row_remove);
 
+        tbody.appendChild(tr);
+
+    }
+
+}
+
+/* Clear tbody
+---------------------------- */
+function clearTbody(){
+    tbody.replaceChildren();
 }
 
 /* Add a New Book Dialog
 ----------------------- */
+const form = document.getElementById("book-form");
+const modal = document.getElementById("book-form-dialog");
+
+form.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+    const new_title = document.getElementById("new_title").value;
+
+    const new_author = document.getElementById("new_author").value;
+
+    const new_pages = document.getElementById("new_pages").value;
+
+    const new_status = document.getElementById("new_status").checked;
+
+    addBookToLibrary(new_title, new_author, new_pages, new_status);
+
+    console.log(myLibrary);
+    
+    clearTbody();
+    displayLibrary(myLibrary);
+
+    modal.close();
+    form.reset();
+});
+
+/* Remove an item
+---------------------------*/
+
+
+
+/* Sample Data & Testing
+----------------------------- */
+// For Testing The Hobbit by J.R.R. Tolkien, 295 pages, not read yet
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
+addBookToLibrary("1984", "George Orwell", 328, true);
+addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, false);
+
+displayLibrary(myLibrary);

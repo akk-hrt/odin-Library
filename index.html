@@ -11,9 +11,11 @@
 <body>
     <main>
         <h1>Odin Library</h1>
-        <!-- <button type="button" id="NewBook">
-            Add New Book
-        </button> -->
+        <button type="button" command="show-modal" commandfor="book-form-dialog" aria-controls="book-form-dialog"
+            id="open_dialog">
+            Add a New Book
+        </button>
+
         <h2>My Library</h2>
         <table>
             <thead class="visually-hidden">
@@ -26,32 +28,25 @@
                     <th scope="col">Remove</th>
                 </tr>
             </thead>
-            <tbody>
-                
+            <tbody id="tbody">
+
             </tbody>
 
         </table>
-        
-    <button 
-        type="button" 
-        command="show-modal"
-        commandfor="book-form-dialog"
-        aria-controls="book-form-dialog" id="open_dialog"
-    >
-        Add a New Book
-    </button>
+
+
     </main>
 
     <dialog id="book-form-dialog" closedby="any">
         <h2 id="newBookForm">
             Add a New Book
         </h2>
-        <form id="book-form" action="" method="">
+        <form id="book-form" action="" method="dialog">
             <p>
                 All fields are required.
             </p>
             <label for="new_title">
-                Title: 
+                Title:
             </label>
             <input type="text" id="new_title" name="new_title" required>
 
@@ -65,15 +60,13 @@
             </label>
             <input type="number" min="1" id="new_pages" name="new_pages" required>
 
-            <input type="checkbox" name="new_status" id="new_status"> <label for="new_status">I have read this book.</label> 
-            <button type="submit">Add to my library.</button>
+            <input type="checkbox" name="new_status" id="new_status"> <label for="new_status">I have read this
+                book.</label>
+            <button type="submit" id="submit">Add to my library.</button>
         </form>
-        
-        <button 
-        type="button" id="close_dialog" 
-        command="close"
-        commandfor="book-form-dialog"
-        aria-controls="book-form-dialog">Close this window</button>
+
+        <button type="button" id="close_dialog" command="close" commandfor="book-form-dialog"
+            aria-controls="book-form-dialog">Close this window</button>
     </dialog>
     <script src="javascript.js"></script>
 </body>

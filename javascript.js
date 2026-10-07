@@ -92,6 +92,10 @@ for (let i = 0; i < myLibrary.length; i++) {
         label_status.setAttribute("for", switch_status_id);
         label_status.textContent = "Already Read";
 
+        if (currentBook.read) {
+            switch_status.checked = true;
+        } 
+
 
         
     // row_status.textContent = switch_status;

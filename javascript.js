@@ -112,6 +112,8 @@ for (let i = 0; i < myLibrary.length; i++) {
         const btn_remove = document.createElement("button")
         
         btn_remove.type = "button"
+
+        btn_remove.setAttribute("data-id", currentBook.id);
         
         btn_remove.textContent = `Remove ${currentBook.title} from my library.`
 

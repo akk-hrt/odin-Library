@@ -107,6 +107,8 @@ function displayLibrary(myLibrary) {
 
         btn_remove.setAttribute("data-id", currentBook.id);
 
+        btn_remove.setAttribute("class", "btns_remove");
+
         btn_remove.textContent = `Remove ${currentBook.title} from my library.`
 
 
@@ -121,7 +123,7 @@ function displayLibrary(myLibrary) {
 
 /* Clear tbody
 ---------------------------- */
-function clearTbody(){
+function clearTbody() {
     tbody.replaceChildren();
 }
 
@@ -144,17 +146,13 @@ form.addEventListener("submit", (event) => {
     addBookToLibrary(new_title, new_author, new_pages, new_status);
 
     console.log(myLibrary);
-    
+
     clearTbody();
     displayLibrary(myLibrary);
 
     modal.close();
     form.reset();
 });
-
-/* Remove an item
----------------------------*/
-
 
 
 /* Sample Data & Testing
@@ -165,3 +163,31 @@ addBookToLibrary("1984", "George Orwell", 328, true);
 addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, false);
 
 displayLibrary(myLibrary);
+
+
+/* Remove an item
+---------------------------*/
+tbody.addEventListener("click", (event) => {
+    const btn = event.target.closest(".btns_remove");
+
+    if (btn) {
+        const id_toRemove = btn.dataset.id;
+        // console.log(id_toRemove);
+
+        for (let i = 0; i < myLibrary.length; i++) {
+            let currentBook = myLibrary[i];
+
+            if (currentBook.id === id_toRemove) {
+                myLibrary.splice(i, 1);
+                clearTbody();
+                displayLibrary(myLibrary);
+            }
+        }
+    } else {
+        return;
+    }
+
+
+
+});
+

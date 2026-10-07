@@ -109,10 +109,14 @@ for (let i = 0; i < myLibrary.length; i++) {
     row_remove.setAttribute("data-label", "remove");
 
         // Create a button
-        const btn_remove = `Remove ${currentBook.title} from my library.`
+        const btn_remove = document.createElement("button")
+        
+        btn_remove.type = "button"
+        
+        btn_remove.textContent = `Remove ${currentBook.title} from my library.`
 
-    row_remove.textContent = btn_remove;
-    // row_remove.appendChild(btn_remove);
+  
+    row_remove.appendChild(btn_remove);
     tr.appendChild(row_remove);
 
     tbody.appendChild(tr);

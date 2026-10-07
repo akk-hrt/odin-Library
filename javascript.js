@@ -80,11 +80,23 @@ for (let i = 0; i < myLibrary.length; i++) {
     const row_status = document.createElement("td");
     row_status.setAttribute("data-label", "status");
     
-        // Create a switch
-        const switch_status = "Read?"
+        // Create a checkbox
+        const switch_status =document.createElement("input");
+        switch_status.setAttribute("type", "checkbox");
+
+        const switch_status_id = `${currentBook.id}_status`;
+        switch_status.setAttribute("id", switch_status_id);
+
+        // Create a label
+        const label_status = document.createElement("label");
+        label_status.setAttribute("for", switch_status_id);
+        label_status.textContent = "Already Read";
+
+
         
-    row_status.textContent = switch_status;
-    // row_status.appendChild(switch_status);
+    // row_status.textContent = switch_status;
+    row_status.appendChild(switch_status);
+    row_status.appendChild(label_status);
     tr.appendChild(row_status);
 
 

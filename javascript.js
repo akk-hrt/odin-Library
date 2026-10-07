@@ -38,7 +38,8 @@ addBookToLibrary("1984", "George Orwell", 328, true);
 addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, false);
 
 
-
+/* Display Library Table
+-------------------------- */
 const tbody = document.querySelector("tbody");
 
 for (let i = 0; i < myLibrary.length; i++) {
@@ -128,3 +129,6 @@ for (let i = 0; i < myLibrary.length; i++) {
     tbody.appendChild(tr);
 
 }
+
+/* Add a New Book Dialog
+----------------------- */

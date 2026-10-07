@@ -31,8 +31,18 @@
             </tbody>
 
         </table>
+        
+    <button 
+        type="button" 
+        command="show-modal"
+        commandfor="book-form-dialog"
+        aria-controls="book-form-dialog" id="open_dialog"
+    >
+        Add a New Book
+    </button>
     </main>
-    <section aria-labelledby="newBookForm">
+
+    <dialog id="book-form-dialog" closedby="any">
         <h2 id="newBookForm">
             Add a New Book
         </h2>
@@ -58,7 +68,13 @@
             <input type="checkbox" name="new_status" id="new_status"> <label for="new_status">I have read this book.</label> 
             <button type="submit">Add to my library.</button>
         </form>
-    </section>
+        
+        <button 
+        type="button" id="close_dialog" 
+        command="close"
+        commandfor="book-form-dialog"
+        aria-controls="book-form-dialog">Close this window</button>
+    </dialog>
     <script src="javascript.js"></script>
 </body>
 

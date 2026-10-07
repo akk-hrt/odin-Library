@@ -30,7 +30,7 @@
                 <tr>
                     <!-- <td>0000</td> -->
                     <td data-label="title">Test Name</td>
-                    <td data-label="author"">Sample Author</td>
+                    <td data-label="author">Sample Author</td>
                     <td data-label="pages">139</td>
                     <td data-label="status">
                         <label>
@@ -52,23 +52,26 @@
         <h2 id="newBookForm">
             Add a New Book
         </h2>
-        <form action="">
+        <form id="book-form" action="" method="">
+            <p>
+                All fields are required.
+            </p>
             <label for="new_title">
                 Title: 
-                <input type="text" id="new_title" name="new_title">
             </label>
+            <input type="text" id="new_title" name="new_title" required>
+
             <label for="new_author">
                 Author:
-                <input type="text" id="new_author" name="new_author">
             </label>
+            <input type="text" id="new_author" name="new_author" required>
+
             <label for="new_pages">
                 Number of Pages:
-                <input type="number" min="1" id="new_pages" name="new_pages">
             </label>
-            <label for="new_status">
-                Have you read this book?
-                <input type="checkbox" name="new_status" id="new_status"> Yes, I have read this book.
-            </label>
+            <input type="number" min="1" id="new_pages" name="new_pages" required>
+
+            <input type="checkbox" name="new_status" id="new_status"> <label for="new_status">I have read this book.</label> 
             <button type="submit">Add to my library.</button>
         </form>
     </section>

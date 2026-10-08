@@ -10,6 +10,12 @@ function Book(title, author, pages, read, id) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.toggleRead = function () {
+        this.read = !this.read;
+        
+        window.alert(`You have changed the reading status of ${this.author}'s ${this.title}.`);
+    }
+
     this.info = function () {
         let reading_status = ''
         if (read) {
@@ -79,6 +85,9 @@ function displayLibrary(myLibrary) {
         const switch_status_id = `${currentBook.id}_status`;
         switch_status.setAttribute("id", switch_status_id);
 
+        switch_status.setAttribute("data-id", currentBook.id);
+
+
         // Create a label
         const label_status = document.createElement("label");
         label_status.setAttribute("for", switch_status_id);
@@ -142,19 +151,16 @@ form.addEventListener("submit", (event) => {
 
     const new_pages = document.getElementById("new_pages").value;
 
-    const new_status = document.getElementsByName("new_status");
+    const new_status = document.querySelector('input[name="new_status"]:checked').value === "true";
 
-    for (entry of new_status) {
-        if (entry.checked) {
-            addBookToLibrary(new_title, new_author, new_pages, entry.value);
-        }
-    }
-
+    addBookToLibrary(new_title, new_author, new_pages, new_status);
 
     clearTbody();
     displayLibrary(myLibrary);
+    window.alert(`You have added ${new_title} to your library.`);
     modal.close();
     form.reset();
+
 });
 
 
@@ -168,12 +174,14 @@ addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, false);
 displayLibrary(myLibrary);
 
 
-/* Remove an item
+/* Manipulate Data
 ---------------------------*/
 tbody.addEventListener("click", (event) => {
     const btn = event.target.closest(".btns_remove");
+    const status_checkbox = event.target.closest('input[type="checkbox"]');
 
     if (btn) {
+        // Remove Book
         const id_toRemove = btn.dataset.id;
         // console.log(id_toRemove);
 
@@ -182,15 +190,30 @@ tbody.addEventListener("click", (event) => {
 
             if (currentBook.id === id_toRemove) {
                 myLibrary.splice(i, 1);
-                clearTbody();
-                displayLibrary(myLibrary);
+                window.alert(`You have removed ${currentBook.title} from your library.`);
+
             }
         }
-    } else {
-        return;
+    } else if (status_checkbox) {
+        // Toggle Reading Status
+
+        const id_toToggle = status_checkbox.dataset.id;
+        for (let i = 0; i < myLibrary.length; i++) {
+            let currentBook = myLibrary[i];
+            if (currentBook.id === id_toToggle) {
+                currentBook.toggleRead();
+            }
+
+        }
     }
 
+    else {
+            return;
+        }
 
+        clearTbody();
+        displayLibrary(myLibrary);
+        console.log(myLibrary);
 
-});
+    });
 

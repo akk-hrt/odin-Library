@@ -38,7 +38,7 @@ const tbody = document.querySelector("tbody");
 function displayLibrary(myLibrary) {
     for (let i = 0; i < myLibrary.length; i++) {
         let currentBook = myLibrary[i];
-        console.log(currentBook);
+        // console.log(currentBook);
 
         // Create a new table row
         const tr = document.createElement("tr");
@@ -129,10 +129,11 @@ function clearTbody() {
 
 /* Add a New Book Dialog
 ----------------------- */
-const form = document.getElementById("book-form");
+const form = document.querySelector("form");
 const modal = document.getElementById("book-form-dialog");
 
 form.addEventListener("submit", (event) => {
+
 
     event.preventDefault();
     const new_title = document.getElementById("new_title").value;
@@ -141,15 +142,17 @@ form.addEventListener("submit", (event) => {
 
     const new_pages = document.getElementById("new_pages").value;
 
-    const new_status = document.getElementById("new_status").checked;
+    const new_status = document.getElementsByName("new_status");
 
-    addBookToLibrary(new_title, new_author, new_pages, new_status);
+    for (entry of new_status) {
+        if (entry.checked) {
+            addBookToLibrary(new_title, new_author, new_pages, entry.value);
+        }
+    }
 
-    console.log(myLibrary);
 
     clearTbody();
     displayLibrary(myLibrary);
-
     modal.close();
     form.reset();
 });

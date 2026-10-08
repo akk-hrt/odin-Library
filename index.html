@@ -45,23 +45,46 @@
             <p>
                 All fields are required.
             </p>
-            <label for="new_title">
-                Title:
-            </label>
-            <input type="text" id="new_title" name="new_title" required>
+            <div class="form-div">
+                <label for="new_title">
+                    Title:
+                </label>
+                <input type="text" id="new_title" name="new_title" required>
+            </div>
 
-            <label for="new_author">
-                Author:
-            </label>
-            <input type="text" id="new_author" name="new_author" required>
+            <div class="form-div">
+                <label for="new_author">
+                    Author:
+                </label>
+                <input type="text" id="new_author" name="new_author" required>
+            </div>
 
-            <label for="new_pages">
-                Number of Pages:
-            </label>
-            <input type="number" min="1" id="new_pages" name="new_pages" required>
+            <div class="form-div">
+                <label for="new_pages">
+                    Number of Pages:
+                </label>
+                <input type="number" min="1" id="new_pages" name="new_pages" required>
+            </div>
 
-            <input type="checkbox" name="new_status" id="new_status"> <label for="new_status">I have read this
-                book.</label>
+
+            <fieldset>
+                <legend>
+                    Have you already this book?
+                </legend>
+
+                <div>
+                    <input type="radio" name="new_status" id="new_status_read" value="true" required>
+                    <label for="new_status_read">Yes, I have already read this book.</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="new_status" id="new_status_notyet" value="false">
+                    <label for="new_status_notyet">No, I have NOT read this book yet.</label>
+                </div>
+            </fieldset>
+
+
+
             <button type="submit" id="submit">Add to my library.</button>
         </form>
 
